@@ -10,4 +10,5 @@ router.get("/", async (req, res) => {
 	res.send(results).status(200);
 });
 
+router.post()
 export default router;
