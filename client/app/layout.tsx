@@ -16,7 +16,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<body
+				className={
+					inter.className +
+					" " +
+					"bg-[url('/TaskVault_Background_Image.jpg')] bg-repeat bg-opacity-25"
+				}
+			>
+				{children}
+			</body>
 		</html>
 	);
 }

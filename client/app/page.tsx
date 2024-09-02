@@ -2,6 +2,7 @@
 import ToDoListItem from "@/components/ToDoListItem";
 import { TaskType } from "@/types/TaskType";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
 	const [tasks, setTask] = useState<TaskType[]>([]);
@@ -66,7 +67,6 @@ export default function Home() {
 		});
 
 		if (response.ok) {
-			const deleteTask = await response.json();
 			const isDeletedTask = (element: TaskType) => element._id === id;
 			const indexOfDeletedTask = tasks.findIndex(isDeletedTask);
 			const tasksCopy = [...tasks];
@@ -80,26 +80,37 @@ export default function Home() {
 
 	return (
 		<main className={"main" + " " + "text-center"}>
-			<div className="bg-yellow-300 p-2">
-				<h1 className="mb-6">To-Do List!</h1>
+			<div className="bg-yellow-300 p-4">
+				<h1 className="text-5xl font-bold float-left hover:animate-bounce delay-500 transition ease-in-out duration-100">
+					<a href="https://www.linkedin.com/in/markquirante/" target="_blank">
+						TaskVault
+					</a>
+				</h1>
 				<form
-					className="mb-6 bg-white p-2 rounded-xl max-w-fit mx-auto"
+					className="bg-white p-2 rounded-full max-w-fit mx-auto"
 					onSubmit={(e) => {
 						e.preventDefault();
 						addTask();
 					}}
 				>
 					<input
-						className="rounded-xl p-2"
+						className="rounded-full p-2"
 						placeholder="Add a Task!"
 						value={newTask}
 						onChange={(e) => setNewTask(e.target.value)}
 					/>
-					<button className="bg-yellow-300 p-1 rounded-xl ml-3">Submit</button>
+					<button className="bg-yellow-300 hover:bg-green-500 p-3 rounded-full ml-2 text-m transition ease-in delay-500 hover:scale-110 duration-300">
+						<Image
+							src="/iconmonstr-plus-2.svg"
+							alt="Plus image icon"
+							width={14}
+							height={14}
+						></Image>
+					</button>
 				</form>
 			</div>
 
-			<ol>
+			<ol className="flex flex-col flex-wrap max-h-[75vh] bg-white my-10 border-solid border-2 max-w-fit mx-auto p-4 rounded-2xl shadow-md shadow-zinc-400">
 				{tasks.map((data) => (
 					<ToDoListItem
 						key={data._id}
