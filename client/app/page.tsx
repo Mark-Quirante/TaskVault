@@ -9,7 +9,7 @@ export default function Home() {
 	const [newTask, setNewTask] = useState<string>("");
 
 	useEffect(() => {
-		fetch("http://localhost:1000/list")
+		fetch(process.env.NEXT_PUBLIC_API_URL || "http://localhost:1000/list")
 			.then((response) => {
 				return response.json();
 			})
@@ -25,11 +25,14 @@ export default function Home() {
 			return;
 		}
 
-		const response = await fetch("http://localhost:1000/list", {
-			method: "POST",
-			headers: { "Content-type": "application/json" },
-			body: JSON.stringify({ name: newTask, isCompleted: false }),
-		});
+		const response = await fetch(
+			process.env.NEXT_PUBLIC_API_URL || "http://localhost:1000/list",
+			{
+				method: "POST",
+				headers: { "Content-type": "application/json" },
+				body: JSON.stringify({ name: newTask, isCompleted: false }),
+			}
+		);
 
 		if (response.ok) {
 			const addedTask = await response.json();
@@ -48,11 +51,14 @@ export default function Home() {
 	const renameTask = async (id: string, name: string) => {
 		console.log("rename task triggered");
 
-		const response = await fetch("http://localhost:1000/list/" + id, {
-			method: "PATCH",
-			headers: { "Content-type": "application/json" },
-			body: JSON.stringify({ name: name, isCompleted: false }),
-		});
+		const response = await fetch(
+			process.env.NEXT_PUBLIC_API_URL + id || "http://localhost:1000/list" + id,
+			{
+				method: "PATCH",
+				headers: { "Content-type": "application/json" },
+				body: JSON.stringify({ name: name, isCompleted: false }),
+			}
+		);
 
 		if (response.ok) {
 		} else {
@@ -61,10 +67,13 @@ export default function Home() {
 	};
 
 	const deleteTask = async (id: string) => {
-		const response = await fetch("http://localhost:1000/list/" + id, {
-			method: "DELETE",
-			headers: { "Content-type": "application/json" },
-		});
+		const response = await fetch(
+			process.env.NEXT_PUBLIC_API_URL + id || "http://localhost:1000/list" + id,
+			{
+				method: "DELETE",
+				headers: { "Content-type": "application/json" },
+			}
+		);
 
 		if (response.ok) {
 			const isDeletedTask = (element: TaskType) => element._id === id;
