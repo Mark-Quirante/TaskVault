@@ -89,8 +89,8 @@ export default function Home() {
 
 	return (
 		<main className={"main" + " " + "text-center"}>
-			<div className="bg-yellow-300 p-4">
-				<h1 className="text-5xl font-bold float-left hover:animate-bounce delay-500 transition ease-in-out duration-100">
+			<div className="flex flex-nowrap flex-col bg-yellow-300 p-4">
+				<h1 className="text-5xl font-bold animate-bounce transition ease-in-out duration-100">
 					<a href="https://www.linkedin.com/in/markquirante/" target="_blank">
 						TaskVault
 					</a>
