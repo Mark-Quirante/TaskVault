@@ -108,7 +108,7 @@ export default function Home() {
 						value={newTask}
 						onChange={(e) => setNewTask(e.target.value)}
 					/>
-					<button className="bg-yellow-300 hover:bg-green-500 p-3 rounded-full ml-2 text-m transition ease-in delay-150 hover:scale-110 duration-300">
+					<button className="bg-yellow-300 hover:bg-green-500 p-3 rounded-full ml-2 text-m transition ease-in hover:scale-110 duration-300">
 						<Image
 							src="/iconmonstr-plus-2.svg"
 							alt="Plus image icon"
