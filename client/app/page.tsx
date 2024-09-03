@@ -119,7 +119,7 @@ export default function Home() {
 				</form>
 			</div>
 
-			<ol className="flex flex-col flex-wrap max-h-[75vh] bg-white my-10 border-solid border-2 max-w-fit mx-auto p-4 rounded-2xl shadow-md shadow-zinc-400">
+			<ol className="flex flex-col flex-wrap md:max-h-[75vh] bg-white my-10 border-solid border-2 max-w-fit mx-auto p-4 rounded-2xl shadow-md shadow-zinc-400">
 				{tasks.map((data) => (
 					<ToDoListItem
 						key={data._id}
